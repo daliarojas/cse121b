@@ -4,10 +4,11 @@
 /* Function Definition - Add Numbers */
 function add(num1, num2){
     //function body
-return num1 + num2;
-}
-let addNumber1 = Number(document.querySelector('#add1').value);
-document.querySelector('#sum').value = add(addNumber1, addNumber2);
+    return num1 + num2;
+} 
+function addNumbers(){let addNumber1 = Number(document.querySelector('#add1').value);
+let addNumber2 = Number(document.querySelector('#add2').value);
+document.querySelector('#sum').value = add(addNumber1, addNumber2);}
 document.querySelector('#addNumbers').addEventListener('click', addNumbers);
 
 /* Function Expression - Subtract Numbers */
@@ -15,9 +16,9 @@ const subtract = function(num1, num2) {
     return num1 - num2;
 };
 const subtractNumbers = function(){
-    const minuend = parseInt(document.querySelector("#minuend").value);
+    const minuend = Number(document.querySelector('#subtract1').value);
     console.log("MINUEND:", minuend)
-    const subtrahend = parseInt(document.querySelector("#subtrahend").value);
+    const subtrahend = Number(document.querySelector('#subtract2').value);
     console.log("SUBSTRAHEND:", subtrahend)
 
     const difference = subtract(minuend, subtrahend);
@@ -31,9 +32,9 @@ const multiply = (factor1, factor2) => {
     return factor1 * factor2;
 };  
 const multiplyNumbers = () => {
-    const firstFactor = parseInt(document.querySelector("#factor1").value);
+    const firstFactor = Number(document.querySelector('#factor1').value);
     console.log("FIRST FACTOR:", firstFactor)
-    const secondFactor = parseInt(document.querySelector("#factor2").value);
+    const secondFactor = Number(document.querySelector('#factor2').value);
     console.log("SECOND FACTOR:", secondFactor)
 
     const product = multiply(firstFactor, secondFactor);
@@ -48,9 +49,9 @@ const divide = (num1, num2) => {
 };
 
 const divideNumbers = () => {
-    const dividend = parseInt(document.querySelector("#dividend").value);
+    const dividend = Number(document.querySelector("#dividend").value);
     console.log("DIVIDEND:", dividend)
-    const divisor = parseInt(document.querySelector("#divisor").value);
+    const divisor = Number(document.querySelector("#divisor").value);
     console.log("DIVISOR:", divisor)
 
     const quotient = divide(dividend, divisor);
@@ -63,29 +64,24 @@ document.querySelector("#divideNumbers").addEventListener('click', divideNumbers
 /* ARRAY METHODS - Functional Programming */
 /* Output Source Array */
 let numbersArray = [1,2,3,4,5,6,7,8,9,10,11,12,13];
-
+document.querySelector('#array').innerHTML = numbersArray;
 /* Output Odds Only Array */
-function findOdds(value) {
-    return value %2 != 0;
-}
-const oddFiltered = array.filter(findOdds);
-console.log(oddFiltered)
-
-document.querySelector("#odds").textContent = oddFiltered
+document.querySelector('#odds').innerHTML = numbersArray.filter(number => number % 2 === 1);
 
 /* Output Evens Only Array */
 document.querySelector('#evens').innerHTML = numbersArray.filter(number => number % 2 === 0);
 
 /* Output Sum of Org. Array */
-numbersArray.reduce((sum, number) => sum + number)
+document.querySelector("#sumOfArray").innerHTML = numbersArray.reduce((sum, number) => sum + number)
 
 /* Output Multiplied by 2 Array */
-numbersArray.map(number => number * 2)
+document.querySelector("#multiplied").innerHTML = numbersArray.map(number => number * 2)
 
 /* Output Sum of Multiplied by 2 Array */
-function sumMultipliedArray(array) {
-    return multiplied.reduce((acumulator, currentValue) => acumulator + currentValue);
+function sumMultipliedArray(array) { 
+    const multipliedArray = array.map(number => number * 2);
+    return multipliedArray.reduce((acumulator, currentValue) => acumulator + currentValue);
 }
-const sumOfMultiplied = sumMultipliedArray(array);
+const sumOfMultiplied = sumMultipliedArray(numbersArray);
 console.log(sumOfMultiplied)
 document.querySelector("#sumOfMultiplied").textContent = sumOfMultiplied;
